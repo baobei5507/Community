@@ -22,7 +22,7 @@ public class GithubUser {
     }
 
     public String getName() {
-        return name;
+        return name+"如果此处显示这段文字，那么名字就为Null";
     }
 
     public void setName(String name) {
