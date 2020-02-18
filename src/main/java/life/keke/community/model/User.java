@@ -1,13 +1,46 @@
 package life.keke.community.model;
 
 import org.apache.ibatis.annotations.Insert;
+import org.springframework.stereotype.Service;
 
-public class User {
+import java.io.Serializable;
+
+
+@Service
+public class User implements Serializable {
+
+    private  Integer id;
     private String name;
     private String account_id;
+    private String bio;
     private String token;
     private  long gmtCreate;
     private long gmtModified;
+    private String avatarUrl;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
 
     public String getName() {
         return name;
@@ -38,7 +71,7 @@ public class User {
     }
 
     public void setGmtCreate(long gmt_create) {
-        this.gmtCreate = gmtCreate;
+        this.gmtCreate = gmt_create;
     }
 
     public long getGmtModified() {
@@ -46,6 +79,6 @@ public class User {
     }
 
     public void setGmtModified(long gmt_modified) {
-        this.gmtModified = gmtModified;
+        this.gmtModified = gmt_modified;
     }
 }

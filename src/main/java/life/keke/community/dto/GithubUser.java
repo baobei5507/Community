@@ -4,6 +4,15 @@ public class GithubUser {
     private String name;
     private long id;
     private String bio;
+    private String avatar_url;
+
+    public String getAvatar_url() {
+        return avatar_url;
+    }
+
+    public void setAvatar_url(String avatar_url) {
+        this.avatar_url = avatar_url;
+    }
 
     public long getId() {
         return id;
@@ -22,7 +31,7 @@ public class GithubUser {
     }
 
     public String getName() {
-        return name+"如果此处显示这段文字，那么名字就为Null";
+        return name;
     }
 
     public void setName(String name) {

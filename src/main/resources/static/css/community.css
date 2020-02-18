@@ -1,0 +1,44 @@
+body{
+    background-color: #efefef;
+}
+
+.main{
+    background-color: white;
+    margin: 30px;
+    HEIGHT: 751PX;
+}
+
+.btn-publish{
+    float: right;
+    margin-bottom: 15px;
+}
+
+.btn-index-publish{
+    float: right;
+    margin-top: 15px;
+}
+
+.picture{
+    width: 54px;
+    height: 61px;
+}
+
+.properties{
+    font-size: 18px;
+    font-weight: normal;
+    color: #999;
+}
+
+.properties-1{
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+}
+
+.tour{
+    margin-top: 141px;
+}
+
+.profile-section{
+    margin-top: 35px;
+}

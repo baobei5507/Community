@@ -17,14 +17,16 @@ public class GithubProvider {
         OkHttpClient client = new OkHttpClient();
             RequestBody body = RequestBody.create(mediaType, JSON.toJSONString(accessTokenDTO));
             Request request = new Request.Builder()
-                    .url("https://github.com/login/oauth/access_token?client_id=d9578dd5d74eea4e62c3&client_secret=044c149a49cbf294788523c55a1b9633bcaea7f1&code="+accessTokenDTO.getCode()+"&redirect_uri=http://localhost:8011/callback&state=1")
+                    .url("https://github.com/login/oauth/access_token")
                     .post(body)
                     .build();
             try (Response response = client.newCall(request).execute()) {
                 String string=response.body().string();
-                System.out.println(string);
-                return string;
+                String[] split = string.split("&");
+                String token = split[0].split("=")[1];
+                return token;
             } catch (IOException e) {
+                e.printStackTrace();
             }
             return null;
     }
@@ -35,10 +37,17 @@ public class GithubProvider {
         Request request = new Request.Builder()
                 .url("https://api.github.com/user?access_token=" + accessToken)
                 .build();
-        Response response = client.newCall(request).execute();
-        String string = response.body().string();
-        GithubUser githubUser=JSON.parseObject(string, GithubUser.class);
-        return githubUser;
+        try {
+            Response response = client.newCall(request).execute();
+            String string = response.body().string();
+            GithubUser githubUser=JSON.parseObject(string, GithubUser.class);
+            return githubUser;
+        }catch (Exception e){
+            return null;
+        }
+
+
+
 
 
     }
