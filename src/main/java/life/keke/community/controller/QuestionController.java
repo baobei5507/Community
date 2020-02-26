@@ -1,6 +1,7 @@
 package life.keke.community.controller;
 
 
+import life.keke.community.dto.CommentDTO;
 import life.keke.community.dto.QuestionDTO;
 import life.keke.community.model.User;
 import life.keke.community.service.QuestionService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class QuestionController {
@@ -19,12 +21,16 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping("/question/{id}")
-    String question(@PathVariable("id") Integer id,
+    String question(@PathVariable("id") Long id,
                     HttpServletRequest request,
                     Model model
     ){
+
         QuestionDTO questionDTO=questionService.findById(id);
+        List<CommentDTO> commentDTOS=questionService.listByQuestionId(id);
+        questionService.incView(id);
         model.addAttribute("question",questionDTO);
+        model.addAttribute("comments",commentDTOS);
         return "question";
     }
 }

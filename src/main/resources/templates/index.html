@@ -12,6 +12,17 @@
 
 
 </head>
+
+<script type="application/javascript">
+    window.onload=function () {
+    var closable = window.localStorage.getItem("closable");
+    if(closable){
+        window.close();
+        window.localStorage.removeItem(closable);
+    }
+}
+</script>
+
 <body>
 
 
@@ -31,7 +42,7 @@
             <!--   文章发布情况       -->
             <div class="media" th:each="question:${pagination.questions}">
                 <div class="media-left">
-                        <img class="media-object picture img-circle" th:src="${question.user.avatarUrl}">
+                        <img class="media-object picture img-circle" th:src="${question.user.getAvatarUrl()}">
                 </div>
                 <div class="media-body">
                        <a th:href="@{'/question/'+${question.id}}" >
@@ -89,8 +100,12 @@
             <h4>热门话题</h4>
             有待补充....
         </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+            当前在线人数: <span th:text="${application.userMap.size()}"></span>
+        </div>
 
     </div>
+
 </div>
 
 

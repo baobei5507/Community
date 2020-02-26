@@ -5,7 +5,7 @@ body{
 .main{
     background-color: white;
     margin: 30px;
-    HEIGHT: 751PX;
+
 }
 
 .btn-publish{
@@ -42,3 +42,32 @@ body{
 .profile-section{
     margin-top: 35px;
 }
+
+.error-style{
+    margin:126px;
+    margin-left:856px;
+}
+
+.repleyer-name{
+    padding: 15px 0px;
+}
+
+.reply-border{
+    margin: 14px 0px;
+}
+
+.comment-btn{
+    float: right;
+    margin-bottom: 12px;
+}
+
+.comment-icon{
+    cursor: pointer;
+    color: #999
+}
+
+.comment-icon:hover{
+    color: #2aabd2;
+}
+
+

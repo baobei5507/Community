@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
 @SpringBootApplication
+@MapperScan( "life.keke.community.mapper")
 public class CommunityApplication {
 
 	public static void main(String[] args) {

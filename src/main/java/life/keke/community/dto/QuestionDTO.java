@@ -4,12 +4,12 @@ package life.keke.community.dto;
 import life.keke.community.model.User;
 
 public class QuestionDTO {
-    private  int id;
+    private  Long id;
     private String title;
     private  String description;
     private  long gmtCreate;
     private long gmtModified;
-    private  Integer creator;
+    private  Long creator;
     private Integer viewCount;
     private  Integer commentCount;
     private  Integer likeCount;
@@ -33,11 +33,11 @@ public class QuestionDTO {
 
     private String tag;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -73,11 +73,11 @@ public class QuestionDTO {
         this.gmtModified = gmtModified;
     }
 
-    public Integer getCreator() {
+    public Long getCreator() {
         return creator;
     }
 
-    public void setCreator(Integer creator) {
+    public void setCreator(Long creator) {
         this.creator = creator;
     }
 
