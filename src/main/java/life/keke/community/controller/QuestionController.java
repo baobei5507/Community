@@ -3,7 +3,8 @@ package life.keke.community.controller;
 
 import life.keke.community.dto.CommentDTO;
 import life.keke.community.dto.QuestionDTO;
-import life.keke.community.model.User;
+import life.keke.community.enums.CommentTypeEnum;
+import life.keke.community.service.CommentService;
 import life.keke.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
+    @Autowired
+    CommentService commentService;
+
     @GetMapping("/question/{id}")
     String question(@PathVariable("id") Long id,
                     HttpServletRequest request,
@@ -27,7 +31,7 @@ public class QuestionController {
     ){
 
         QuestionDTO questionDTO=questionService.findById(id);
-        List<CommentDTO> commentDTOS=questionService.listByQuestionId(id);
+        List<CommentDTO> commentDTOS=commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
         questionService.incView(id);
         model.addAttribute("question",questionDTO);
         model.addAttribute("comments",commentDTOS);

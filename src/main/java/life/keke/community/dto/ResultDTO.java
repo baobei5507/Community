@@ -4,9 +4,10 @@ package life.keke.community.dto;
 import life.keke.community.exception.CustomizeErrorCode;
 import life.keke.community.exception.CustomizeException;
 
-public class ResultDTO {
+public class ResultDTO<T> {
     private Integer code;
     private  String message;
+    private T data;
 
     public static ResultDTO errorOf(Integer code,String message){
         ResultDTO resultDTO=new ResultDTO();
@@ -23,6 +24,13 @@ public class ResultDTO {
         ResultDTO resultDTO=new ResultDTO();
         resultDTO.setMessage("请求成功");
         resultDTO.setCode(200);
+        return resultDTO;
+    }
+    public static <T> ResultDTO okOf(T t) {
+        ResultDTO resultDTO=new ResultDTO();
+        resultDTO.setMessage("请求成功");
+        resultDTO.setCode(200);
+        resultDTO.setData(t);
         return resultDTO;
     }
 
@@ -45,5 +53,13 @@ public class ResultDTO {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 }

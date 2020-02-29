@@ -66,8 +66,25 @@ body{
     color: #999
 }
 
+.active{
+    color: #2aabd2;
+}
+
 .comment-icon:hover{
     color: #2aabd2;
 }
 
+.comment-style{
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+#rule{
+    display: none;
+}
+
+.second-comment{
+    border: 1px solid #ffc6ab;
+    margin: 5px;
+}
 
