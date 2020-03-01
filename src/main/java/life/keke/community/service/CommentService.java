@@ -5,10 +5,7 @@ import life.keke.community.dto.CommentDTO;
 import life.keke.community.enums.CommentTypeEnum;
 import life.keke.community.exception.CustomizeErrorCode;
 import life.keke.community.exception.CustomizeException;
-import life.keke.community.mapper.CommentMapper;
-import life.keke.community.mapper.QuestionExtMapper;
-import life.keke.community.mapper.QuestionMapper;
-import life.keke.community.mapper.UserMapper;
+import life.keke.community.mapper.*;
 import life.keke.community.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +33,9 @@ public class CommentService {
     @Autowired
     private QuestionExtMapper questionExtMapper;
 
+    @Autowired
+    private CommentExtMapper commentExtMapper;
+
 
     @Transactional
     public void insert(Comment comment) {
@@ -53,7 +53,10 @@ public class CommentService {
             if(dbComment == null){
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
-            commentMapper.insert(comment);
+            Comment parentComment = comment;
+            parentComment.setId(comment.getParentId());
+            parentComment.setCommentCount(1);
+            commentExtMapper.incCommentCount(parentComment);
         }else {
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
             if(question == null){

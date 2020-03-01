@@ -65,11 +65,33 @@ function collapseComments(e) {
           }else{
               $.getJSON( "/comment/"+id, function( data ) {
             $.each( data.data.reverse(), function(index,comment) {
-                var c=$("<div/>",{
-                    "class":"col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-style",
-                    html: comment.content
-                });
-                subCommentContainer.prepend(c);
+                var mediaLeftElement=$("<div/>",{
+                    "class":"media-left"
+                }).append($("<img/>", {
+                    "class": "media-object picture img-rounded",
+                    "src": comment.user.avatarUrl
+                }));
+
+                var mediaBodyElement=$("<div/>",{
+                    "class":"media-body"
+                }).append($("<span/>", {
+                    "html": comment.user.name
+                })).append($("<div/>", {
+                    "html": comment.content
+                })).append($("<span/>", {
+                    "class":"pull-right",
+                    "html":moment(comment.gmtCreate).format('YYYY-MM-DD HH:mm')
+                }));
+
+                var mediaElement=$("<div/>",{
+                    "class":"col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                }).append(mediaLeftElement).append(mediaBodyElement);
+
+                var commentElement=$("<div/>",{
+                    "class":"col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-style"
+                }).append(mediaElement);
+
+                subCommentContainer.prepend(commentElement);
             });
             //展开二级评论
         comments.addClass("in");
