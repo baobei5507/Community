@@ -30,6 +30,7 @@ public class CommentController {
     @ResponseBody
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
     public Object post(@RequestBody CommentCreateDTO commentCreateDTO,
+
                        HttpServletRequest request){
 
 

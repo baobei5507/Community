@@ -1,12 +1,14 @@
 package life.keke.community.controller;
 
 
+import life.keke.community.cache.TagCache;
 import life.keke.community.dto.QuestionDTO;
 import life.keke.community.mapper.QuestionMapper;
 import life.keke.community.mapper.UserMapper;
 import life.keke.community.model.Question;
 import life.keke.community.model.User;
 import life.keke.community.service.QuestionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,14 +42,16 @@ public class PublishController {
         model.addAttribute("tag",question.getTag());
         model.addAttribute("id",question.getId());
 
+        model.addAttribute("tags", TagCache.get());
+
         return "publish";
     }
 
 
     @GetMapping("/publish")
-    public String publish(
+    public String publish(Model model
     ){
-
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
@@ -66,7 +70,7 @@ public class PublishController {
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
 
-
+        model.addAttribute("tags", TagCache.get());
 
         User user = (User) request.getSession().getAttribute("user");
 
@@ -98,7 +102,11 @@ public class PublishController {
         }
 
 
-
+        String invalid = TagCache.filterInvalid(tag);
+        if(StringUtils.isNotBlank(invalid)){
+            model.addAttribute("error","输入非法标签："+invalid);
+            return "publish";
+        }
 
 
         Question question=new Question();

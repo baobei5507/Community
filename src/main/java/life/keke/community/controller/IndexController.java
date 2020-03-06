@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -18,7 +19,7 @@ public class IndexController {
     @Autowired
     private QuestionService questionService;
 
-    @RequestMapping( "/")
+    @RequestMapping( value = "/")
     public String hello(
                         Model model,
                         @RequestParam(name = "page",defaultValue = "1") Integer page,
@@ -31,4 +32,6 @@ public class IndexController {
         model.addAttribute("pagination",pagination);
         return "index";
     }
+
+
 }

@@ -53,6 +53,8 @@ public class CommentService {
             if(dbComment == null){
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
+            commentMapper.insert(comment);
+
             Comment parentComment = comment;
             parentComment.setId(comment.getParentId());
             parentComment.setCommentCount(1);

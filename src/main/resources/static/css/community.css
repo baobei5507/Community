@@ -90,3 +90,13 @@ body{
     margin: 5px;
 }
 
+.relatedquestion{
+    list-style: none;
+    padding-left: 0px;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.tag{
+    margin-right: 3px;
+}
