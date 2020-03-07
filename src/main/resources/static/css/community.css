@@ -16,6 +16,7 @@ body{
 .btn-index-publish{
     float: right;
     margin-top: 15px;
+    margin-right: 10px;
 }
 
 .picture{
@@ -98,5 +99,9 @@ body{
 }
 
 .tag{
-    margin-right: 3px;
+    margin-right: 10px;
+}
+
+.label-info{
+    white-space: normal;
 }

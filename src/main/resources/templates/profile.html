@@ -30,12 +30,16 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" th:text="${question.title}"></h4>
+                    <a th:href="@{'/question/'+${question.id}}"><h4 class="media-heading" th:text="${question.title}"></h4></a>
                     <span th:text="${question.description}"></span> <br>
-                    <span class="properties"> <span th:text="${question.commentCount}"></span>个回复 <span
-                            th:text="${question.viewCount}"></span>个浏览 <span
-                            th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
+                    <span class="properties"> <span th:text="${question.commentCount}"></span>个回复
+                        <span th:text="${question.viewCount}"></span>个浏览
+                        <span th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
+                        <a th:href="@{'/publish/'+${question.id} } "
+                              th:if="${session.user!=null && session.user.id == question.creator}">
+                            <span class="glyphicon glyphicon-scissors"></span>编辑</a>
                     </span>
+
                 </div>
             </div>
             <!-- 导航条  -->

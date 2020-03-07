@@ -3,6 +3,8 @@ package life.keke.community.controller;
 
 import life.keke.community.dto.AccessTokenDTO;
 import life.keke.community.dto.GithubUser;
+import life.keke.community.exception.CustomizeErrorCode;
+import life.keke.community.exception.CustomizeException;
 import life.keke.community.model.User;
 import life.keke.community.provider.GithubProvider;
 import life.keke.community.service.UserService;
@@ -65,8 +67,7 @@ public class AuthorizeController {
             return "redirect:/";
         } else{
             //登录失败，重新登录
-            System.out.println("登陆失败，请重新登陆");
-            return "redirect:/";
+            throw new CustomizeException(CustomizeErrorCode.LOGIN_FAILED);
         }
     }
 

@@ -8,7 +8,8 @@ public enum  CustomizeErrorCode implements ICustomizeErrorCode {
     SYSTEM_ERROR(2004,"请您稍后再试"),
     TYPE_PARAM_WRONG(2005,"评论错误或不存在"),
     COMMENT_NOT_FOUND(2006,"回复的评论不存在"),
-    COMMENT_CONTENT_NOT_FOUND(2007,"未输入回复内容")
+    COMMENT_CONTENT_NOT_FOUND(2007,"未输入回复内容"),
+    LOGIN_FAILED(2008,"登录失败，请检查一下网络再试试")
     ;
 
 

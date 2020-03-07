@@ -11,28 +11,28 @@ import java.util.stream.Collectors;
 
 public class TagCache {
 
-    public static List<TagDTO> get(){
+    public static List<TagDTO> get() {
         ArrayList<TagDTO> tagDTOS = new ArrayList<>();
-        TagDTO program=new TagDTO();
+        TagDTO program = new TagDTO();
         program.setCategoryName("开发语言");
-        program.setTags(Arrays.asList("js","php","css","html","java","python"));
+        program.setTags(Arrays.asList("js", "php", "css", "html", "java", "python"));
         tagDTOS.add(program);
 
         TagDTO framework = new TagDTO();
         framework.setCategoryName("平台框架");
-        framework.setTags(Arrays.asList("js","php","css","html","java","python"));
+        framework.setTags(Arrays.asList("js", "php", "css", "html", "java", "python", "js", "php", "js", "php", "js", "php", "js", "php"));
         tagDTOS.add(framework);
 
         TagDTO server = new TagDTO();
         server.setCategoryName("服务器");
-        server.setTags(Arrays.asList("js","php","css","html","java","python"));
+        server.setTags(Arrays.asList("js", "php", "css", "html", "java", "python", "java", "python", "java", "python", "java", "python", "java", "python", "java", "python", "java", "python", "java", "python", "java", "python","java", "python", "java", "python", "java", "python"));
         tagDTOS.add(server);
 
         return tagDTOS;
     }
 
-    public static String filterInvalid(String tags){
-        String[] split= StringUtils.split(tags,",");
+    public static String filterInvalid(String tags) {
+        String[] split = StringUtils.split(tags, ",");
         List<TagDTO> tagDTOS = get();
 
         List<String> tagList = tagDTOS.stream().flatMap(tag -> tag.getTags().stream()).collect(Collectors.toList());
