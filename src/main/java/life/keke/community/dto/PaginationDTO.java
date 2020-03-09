@@ -1,12 +1,11 @@
 package life.keke.community.dto;
 
 
-import java.lang.annotation.ElementType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaginationDTO {
-    List<QuestionDTO> questions;
+public class PaginationDTO<T> {
+    List<T> data;
     private  boolean showFirstPage;
     private  boolean  showPrevious;
     private  boolean  showNext;
@@ -30,12 +29,12 @@ public class PaginationDTO {
         this.totalPage = totalPage;
     }
 
-    public List<QuestionDTO> getQuestions() {
-        return questions;
+    public List<T> getData() {
+        return data;
     }
 
-    public void setQuestions(List<QuestionDTO> questions) {
-        this.questions = questions;
+    public void setData(List<T> data) {
+        this.data = data;
     }
 
     public boolean isShowFirstPage() {

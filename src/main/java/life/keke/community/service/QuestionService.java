@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,6 +33,7 @@ public class QuestionService {
 
     @Autowired
     private QuestionExtMapper questionExtMapper;
+
 
 
     public PaginationDTO list(Integer page, Integer size) {
@@ -59,7 +59,7 @@ public class QuestionService {
             questionDTOList.add(questionDTO);
         }
 
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         paginationDTO.setPaginationDTO(totalCount, page, size);
 
         return paginationDTO;
@@ -76,7 +76,7 @@ public class QuestionService {
         Integer offset = size * (page - 1);
 
         QuestionExample example1 = new QuestionExample();
-        example.createCriteria().andCreatorEqualTo(userId);
+        example1.createCriteria().andCreatorEqualTo(userId);
         List<Question> questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(example1, new RowBounds(offset, size));
 
         List<QuestionDTO> questionDTOS = new ArrayList<>();
@@ -89,7 +89,7 @@ public class QuestionService {
             questionDTOS.add(questionDTO);
         }
 
-        paginationDTO.setQuestions(questionDTOS);
+        paginationDTO.setData(questionDTOS);
         paginationDTO.setPaginationDTO(totalCount, page, size);
         return paginationDTO;
     }

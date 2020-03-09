@@ -3,7 +3,6 @@ package life.keke.community.controller;
 
 import life.keke.community.cache.TagCache;
 import life.keke.community.dto.QuestionDTO;
-import life.keke.community.mapper.QuestionMapper;
 import life.keke.community.mapper.UserMapper;
 import life.keke.community.model.Question;
 import life.keke.community.model.User;

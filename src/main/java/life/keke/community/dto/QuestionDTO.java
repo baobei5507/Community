@@ -14,6 +14,7 @@ public class QuestionDTO {
     private  Integer commentCount;
     private  Integer likeCount;
     private User user;
+    private String tag;
 
     public User getUser() {
         return user;
@@ -31,7 +32,7 @@ public class QuestionDTO {
         this.tag = tag;
     }
 
-    private String tag;
+
 
     public Long getId() {
         return id;

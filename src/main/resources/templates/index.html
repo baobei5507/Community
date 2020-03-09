@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/community.css">
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="js/bootstrap.min.js" typeName="application/javascript"></script>
 
 
 
 </head>
 
-<script type="application/javascript">
+<script typeName="application/javascript">
     window.onload=function () {
     var closable = window.localStorage.getItem("closable");
     if(closable){
@@ -40,7 +40,7 @@
 
 
             <!--   文章发布情况       -->
-            <div class="media" th:each="question:${pagination.questions}">
+            <div class="media" th:each="question:${pagination.data}">
                 <div class="media-left">
                         <img class="media-object picture img-circle" th:src="${question.user.getAvatarUrl()}">
                 </div>
