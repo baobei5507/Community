@@ -33,8 +33,6 @@ public class NotificationController {
             return "redirect:/";
         }
 
-
-
         NotificationDTO notificationDTO=notificationService.read(id,user);
 
         if(NotificationTypeEnum.REPLY_COMMENT.getType()==notificationDTO.getType()

@@ -7,17 +7,17 @@ import life.keke.community.enums.NotificationTypeEnum;
 import life.keke.community.exception.CustomizeErrorCode;
 import life.keke.community.exception.CustomizeException;
 import life.keke.community.mapper.NotificationMapper;
-import life.keke.community.mapper.UserMapper;
-import life.keke.community.model.*;
+import life.keke.community.model.Notification;
+import life.keke.community.model.NotificationExample;
+import life.keke.community.model.User;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class NotificationService {
@@ -25,8 +25,7 @@ public class NotificationService {
     @Autowired
     private NotificationMapper notificationMapper;
 
-    @Autowired
-    private UserMapper userMapper;
+
 
 
     public PaginationDTO list(Long userId, Integer page, Integer size) {
@@ -41,6 +40,8 @@ public class NotificationService {
         NotificationExample example1 = new NotificationExample();
         example1.createCriteria().andReceiverEqualTo(userId);
         List<Notification> notifications =notificationMapper.selectByExampleWithRowbounds(example1, new RowBounds(offset, size));
+
+        paginationDTO.setPaginationDTO(totalCount,page,size);
 
         if(notifications.size()==0){
             return paginationDTO;
@@ -57,6 +58,8 @@ public class NotificationService {
 
 
         paginationDTO.setData(notificationDTOS);
+
+
         return paginationDTO;
     }
 
@@ -72,7 +75,7 @@ public class NotificationService {
         Notification notification = notificationMapper.selectByPrimaryKey(id);
         if(notification==null){
             throw new CustomizeException(CustomizeErrorCode.NOTIFICATION_NOT_FOUND);
-        } if(!notification.getReceiver().equals(user.getId())){
+        } if(!Objects.equals(notification.getReceiver(), user.getId())){
             throw new CustomizeException(CustomizeErrorCode.READ_NOTIFICATION_FAIL);
         }
 
