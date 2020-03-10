@@ -51,7 +51,7 @@
                     <div class="media-body">
                         <p class="media-heading">
                             <span th:text="${notification.notifierName +' '+ notification.typeName+' '}"></span>
-                        <a th:href="@{'/notification/'+${notification.outerid}}"
+                        <a th:href="@{'/question/'+${notification.outerid}}"
                            th:text="${notification.outerTitle}">
                         </a>
                             <span class="label label-danger" th:if="${notification.status==0}">未读</span>

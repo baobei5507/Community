@@ -7,7 +7,7 @@
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
         
-        <plugin typeName="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
         
         <jdbcConnection driverClass="org.h2.Driver"
                         connectionURL="jdbc:h2:~/community"
@@ -28,7 +28,7 @@
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator typeName="XMLMAPPER" targetPackage="life.keke.community.mapper"  targetProject="src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="life.keke.community.mapper"  targetProject="src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
